@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAMPRINT Subscription</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Body styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('backgroundtamprint.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #000000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: rgba(76, 175, 79, 0.9);
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 15px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            color: #000000;
+            margin: 0;
+        }
+
+        .nav {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav li {
+            margin-left: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #050505;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #d4f1d7;
+        }
+
+        /* Main container styling */
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            width: 40%;
+            padding: 40px 30px;
+            margin: 100px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+
+        input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="email"]:focus {
+            border-color: #4CAF50;
+        }
+
+        .subscription-options {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .subscription-options input[type="radio"] {
+            display: none;
+        }
+
+        .subscription-options label {
+            position: relative;
+            display: inline-block;
+            background-color: #f0f0f0;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .subscription-options input[type="radio"]:checked + label {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .subscription-options label:hover {
+            background-color: #eaeaea;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #224824;
+        }
+
+        p {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            margin-top: auto;
+        }
+
+        footer .social-icons {
+            margin: 10px 0;
+        }
+
+        footer .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #d4f1d7;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+            }
+        }
+
+        .benefits-section {
+            background-color: #eaf8e4;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        .benefits-section h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .benefits-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: #555;
+        }
+
+        .no-subscription-option {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .no-subscription-option:hover {
+            background-color: #e53935;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="profile.html">
+                <img src="gambaruser.png" alt="Profile Logo">
+            </a>
+            <h1>TAMPRINT</h1>
+        </div>
+        <nav>
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="myorder.html">My order</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Subscribe to Our Services</h1>
+        <!-- Exclusive Subscriber Benefits -->
+        <div class="benefits-section">
+            <h2>Exclusive Subscriber Benefits</h2>
+            <ul class="benefits-list">
+                <li><strong>Canva Premium Access:</strong> Create stunning designs with professional templates and high-resolution downloads.</li>
+                <li><strong>Priority Processing:</strong> Faster processing times for subscribers.</li>
+                <li><strong>Exclusive Discounts:</strong> Special offers for loyal customers.</li>
+            </ul>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <!-- Subscription Options -->
+        <div class="subscription-options">
+            <div>
+                <input type="radio" id="monthly" name="subscription" value="monthly">
+                <label for="monthly">RM5/month</label>
+            </div>
+            <div>
+                <input type="radio" id="yearly" name="subscription" value="yearly">
+                <label for="yearly">RM50/year</label>
+            </div>
+        </div>
+
+        <button type="button" onclick="subscribe()">Subscribe</button>
+
+        <!-- No Subscription Option -->
+        <div>
+            <br>
+            <a href="services.html" class="no-subscription-option">No, thanks</a>
+        </div>
+        <br>
+        <p id="message">
+
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.twitter.com/" aria-label="Twitter" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 TAMPRINT. All rights reserved.</p>
+    </footer>
+
+    <script>
+    function subscribe() {
+    const email = document.getElementById('email').value;
+    const monthlyOption = document.getElementById('monthly');
+    const yearlyOption = document.getElementById('yearly');
+    let subscriptionType = '';
+
+    // Email format validation using regex
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(email)) {
+        document.getElementById('message').textContent = 'Please enter a valid email address.';
+        document.getElementById('message').style.color = 'red';
+        return;
+    }
+
+    if (monthlyOption.checked) {
+        subscriptionType = 'Monthly (RM 5)';
+    } else if (yearlyOption.checked) {
+        subscriptionType = 'Yearly (RM 50)';
+    } else {
+        document.getElementById('message').textContent = 'Please select a subscription plan.';
+        document.getElementById('message').style.color = 'red';
+        return;
+    }
+
+    let subscriptions = JSON.parse(localStorage.getItem('subscriptions')) || [];
+
+    if (subscriptions.some(sub => sub.email === email)) {
+        document.getElementById('message').textContent = 'You are already subscribed!';
+        document.getElementById('message').style.color = 'red';
+        window.location.href = 'services.html';
+    } else {
+        subscriptions.push({ email, subscription: subscriptionType });
+        localStorage.setItem('subscriptions', JSON.stringify(subscriptions));
+
+        document.getElementById('message').textContent = 'Thank you for subscribing!';
+        document.getElementById('message').style.color = 'green';
+
+        document.getElementById('email').value = '';
+        document.getElementById('monthly').checked = false;
+        document.getElementById('yearly').checked = false;
+
+        // Redirect to services page after successful subscription
+        window.location.href = 'services.html';
+    }
+}
+</script>
+</body>
+</html>

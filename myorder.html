@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAMPRINT - My Orders</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        * {
+            margin:  0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('backgroundtamprint.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #000000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: rgba(76, 175, 79, 0.8);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 15px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            color: #000000;
+        }
+
+        .nav {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav li {
+            margin-left: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #000000;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #145d1c;
+        }
+
+        .container {
+    flex-grow: 1;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Allow horizontal scrolling */
+}
+
+table {
+    width: 100%;
+    min-width: px; /* Set a minimum width to prevent columns from cramping */
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #333;
+    word-wrap: break-word; /* Wrap text to fit the cell */
+    word-break: break-word; /* Break long words */
+    overflow-wrap: break-word; /* Ensure text wraps properly */
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+        td a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .pay-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 5px;
+        }
+
+        .pay-btn:hover {
+            background-color: #388E3C;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            margin-top: auto;
+        }
+
+        footer .social-icons {
+            margin: 10px 0;
+        }
+
+        footer .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #d4f1d7;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="profile.html">
+                <img src="gambaruser.png" alt="Profile Logo">
+            </a>
+            <h1>TAMPRINT</h1>
+        </div>
+        <nav>
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="myorder.html">My Order</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Your Orders</h2>
+        <table id="orderTable">
+            <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Pages</th>
+                    <th>Format</th>
+                    <th>File</th>
+                    <th>Payment Method</th>
+                    <th>Delivery Method</th>
+                    <th>Total Amount</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Orders will be inserted here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.twitter.com/" aria-label="Twitter" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 TAMPRINT. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const pricePerPageBlackWhite = 0.10;
+        const pricePerPageColor = 0.30;
+        const pricePerLamination = 0.50;
+        const pricePerBinding = 2.00;
+        const pricePerItemPrintOnDemand = 2.00;
+
+        function displayOrders() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const orderTable = document.getElementById('orderTable').getElementsByTagName('tbody')[0];
+
+            if (orders.length === 0) {
+                orderTable.innerHTML = '<tr><td colspan="8" style="text-align:center;">No orders found.</td></tr>';
+                return;
+            }
+
+            orderTable.innerHTML = '';
+
+            orders.forEach((order, index) => {
+                let totalAmount = 0;
+
+                if (order.type === 'regular') {
+                    let pagePrice = (order.format === 'color') ? pricePerPageColor : pricePerPageBlackWhite;
+                    totalAmount = order.pages * pagePrice;
+
+                    if (order.lamination) {
+                        totalAmount += order.pages * pricePerLamination;
+                    }
+
+                    if (order.binding) {
+                        totalAmount += pricePerBinding;
+                    }
+
+                    const row = orderTable.insertRow();
+                    row.innerHTML = `
+                        <td>${order.service}</td>
+                        <td>${order.pages}</td>
+                        <td>${order.format}</td>
+                        <td><a href="path/to/uploads/${order.upload}" target="_blank">Download</a></td>
+                        <td>${order.paymentMethod}</td>
+                        <td>${order.deliveryMethod}</td>
+                        <td>$${totalAmount.toFixed(2)}</td>
+                        <td>
+                            <button class="delete-btn" onclick="deleteOrder(${index})">Delete</button>
+                            <button class="pay-btn" onclick="continueToPay(${index})">Continue to Pay</button>
+                        </td>
+                    `;
+                } else if (order.type === 'print-on-demand') {
+                    totalAmount = order.quantity * pricePerItemPrintOnDemand;
+
+                    const row = orderTable.insertRow();
+                    row.innerHTML = `
+                        <td>${order.designChoice === 'own' ? 'Own Design' : 'Our Design'}</td>
+                        <td>${order.quantity}</td>
+                        <td>${order.paperSize}</td>
+                        <td><a href="path/to/uploads/${order.designUpload}" target="_blank">Download</a></td>
+                        <td>${order.paymentMethod}</td>
+                        <td>${order.deliveryMethod}</td>
+                        <td>$${totalAmount.toFixed(2)}</td>
+                        <td>
+                            <button class="delete-btn" onclick="deleteOrder(${index})">Delete</button>
+                            <button class="pay-btn" onclick="continueToPay(${index})">Continue to Pay</button>
+                        </td>
+                    `;
+                }
+            });
+        }
+
+        function deleteOrder(index) {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            orders.splice(index, 1);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            displayOrders();
+        }
+
+        function continueToPay(index) {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const order = orders[index];
+            const paymentPageUrl = `paymentpage.html?orderId=${index}&amount=${order.totalAmount || 0}`;
+            window.location.href = "paymentpage.html"
+        }
+
+        window.onload = displayOrders;
+    </script>
+</body>
+</html>
